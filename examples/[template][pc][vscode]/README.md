@@ -47,7 +47,7 @@ For Windows users, because of a known **Windows-only** GCC compilation issue, we
 Please install the required modules with the following command:
 
 ```sh
-sudo apt-get update && sudo apt-get install -y build-essential libsdl2-dev gdb-multiarch llvm
+sudo apt-get update && sudo apt-get install -y build-essential libsdl2-dev gdb-multiarch llvm lld clang
 ```
 
 Please install **Visual Studio Code** and the **Microsoft C/C++ Extension**.
