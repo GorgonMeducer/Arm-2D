@@ -234,6 +234,8 @@ void progress_wheel_on_frame_start(progress_wheel_t *ptThis)
         /* call helper's on-frame-begin event handler */
         arm_2d_helper_dirty_region_transform_on_frame_start(&this.tTransHelper);
     }
+
+    this.bProgressUpdated = this.iProgress != this.iLastProgress;
 }
 
 ARM_NONNULL(1,2)
@@ -308,7 +310,6 @@ void progress_wheel_show(   progress_wheel_t *ptThis,
                 
                 int8_t chQuadrantChange = chCurrentQuadrant - this.chLastQuadrant;
                 int8_t chDelta = ABS(chQuadrantChange);
-
                 ARM_2D_LOG_INFO(
                     CONTROLS, 
                     0, 
@@ -1217,8 +1218,10 @@ void progress_wheel_show(   progress_wheel_t *ptThis,
                     
                     arm_2d_helper_dirty_region_transform_suspend_update(
                                                     &this.tTransHelper,
-                                                    (chState == DRAW_WHOLE_WHEEL)
+                                                    (chState == DRAW_WHOLE_WHEEL) || !this.bProgressUpdated
                                                 );
+
+                    
                 }
 
                 arm_2d_helper_dirty_region_transform_update(&this.tTransHelper,

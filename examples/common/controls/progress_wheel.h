@@ -91,6 +91,7 @@ ARM_PRIVATE(
     arm_2d_tile_t tileInvisibleDot;
 
     int8_t  chLastQuadrant;
+    bool    bProgressUpdated;
     int16_t iLastProgress;
     int16_t iProgress;
     int16_t iNewProgress;
